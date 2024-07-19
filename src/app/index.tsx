@@ -52,8 +52,8 @@ const Index = ():JSX.Element =>{
       </View>
 
       {/* イベント追加ボタン */}
-      <View>
-        <Text>+</Text>
+      <View style={styles.eventAddButton}>
+        <Text style={styles.eventAddButtonText}>+</Text>
       </View>
 
     </View>
@@ -117,6 +117,33 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
     color: 'rgba(0, 0, 0, 0.5)',
+  },
+
+  // イベント追加ボタン
+  eventAddButton:{
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    backgroundColor: '#000000',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    right: 40,
+    bottom: 40,
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 8,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 8,
+    elevation: 8,
+  },
+  eventAddButtonText:{
+    color: '#FFFFFF',
+    fontSize: 40,
+    lineHeight: 42,
+    fontWeight: 'bold',
   },
 })
 
