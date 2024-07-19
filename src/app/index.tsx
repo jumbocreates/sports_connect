@@ -3,14 +3,19 @@ import { View, Text, StyleSheet } from "react-native"
 const Index = ():JSX.Element =>{
   return (
     <View style={styles.container}>
-      <View>
-        <View>
-          <Text>Sports Connect</Text>
-          <Text>ログアウト</Text>
+
+      {/* ヘッダー */}
+      <View style={styles.header}>
+        <View style={styles.headerInner}>
+          <Text style={styles.headerTitle}>Sports Connect</Text>
+          <Text style={styles.headerRight}>ログアウト</Text>
         </View>
       </View>
+
+      {/* イベント一覧 */}
       <View>
 
+        {/* イベント */}
         <View>
           <View>
             <Text>Lv.1 男女混合バレーボール</Text>
@@ -46,9 +51,11 @@ const Index = ():JSX.Element =>{
 
       </View>
 
+      {/* イベント追加ボタン */}
       <View>
         <Text>+</Text>
       </View>
+
     </View>
   )
 }
@@ -56,8 +63,30 @@ const Index = ():JSX.Element =>{
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: '#FFFFFF',
+  },
+  header: {
+    backgroundColor: '#FFFFFF',
+    height: 104,
+    justifyContent: 'flex-end',
+  },
+  headerInner: {
+    alignItems: 'center',
+  },
+  headerTitle: {
+    color: '#000000',
+    fontSize: 32,
+    fontWeight: 'bold',
+    lineHeight: 32,
+    marginBottom: 16,
+  },
+  headerRight: {
+    position: 'absolute',
+    right: 16,
+    bottom: 16,
+    color: 'rgba(0, 0, 0, 0.5)',
+    fontSize: 12,
+    lineHeight: 16,
   },
 })
 
