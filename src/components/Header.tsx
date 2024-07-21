@@ -24,18 +24,18 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: '#000000',
-    fontSize: 32,
+    fontSize: 40,
     fontWeight: 'bold',
-    lineHeight: 32,
+    lineHeight: 48,
     marginBottom: 16,
   },
   headerRight: {
     position: 'absolute',
-    right: 16,
-    bottom: 16,
+    right: 8,
+    bottom: 30,
     color: 'rgba(0, 0, 0, 0.5)',
-    fontSize: 12,
-    lineHeight: 16,
+    fontSize: 10,
+    lineHeight: 12,
   },
 
 });
