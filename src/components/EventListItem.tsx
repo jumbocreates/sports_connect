@@ -1,4 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Icon from './Icon';
 
 const EventListItem = (): JSX.Element => {
   return (
@@ -8,9 +9,9 @@ const EventListItem = (): JSX.Element => {
         <Text style={styles.eventListItemDate}>2024/7/21(日) 16:00~18:30</Text>
         <Text style={styles.eventListItemPlace}>京都テルサ</Text>
       </View>
-      <View>
-        <Text>X</Text>
-      </View>
+      <TouchableOpacity>
+        <Icon name='delete' size={40} color='#B0B0B0'/>
+      </TouchableOpacity>
     </View>
   );
 };
