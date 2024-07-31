@@ -1,8 +1,7 @@
-import { View, Text, ScrollView, StyleSheet } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
+import { Feather } from "@expo/vector-icons"
 import Header from "../../components/Header"
 import CircleButton from "../../components/CircleButton"
-
-
 
 const Detail = (): JSX.Element => {
   return (
@@ -55,6 +54,9 @@ const Detail = (): JSX.Element => {
           <Text style={styles.eventSpecialRules}>・前衛のセンタープレーヤーがセッターをすること</Text>
         </View>
       </View>
+        <CircleButton style={{ top:160, bottom: 'auto' }}>
+          <Feather name="plus" size={40}/>
+        </CircleButton>
     </View>
   )
 }
