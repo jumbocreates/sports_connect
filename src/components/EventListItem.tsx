@@ -1,18 +1,21 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from './Icon';
+import { Link } from 'expo-router';
 
 const EventListItem = (): JSX.Element => {
   return (
-    <View style={styles.eventListItem}>
-      <View>
-        <Text style={styles.eventListTitle}>Lv.1 男女混合バレーボール</Text>
-        <Text style={styles.eventListItemDate}>2024/7/21(日) 16:00~18:30</Text>
-        <Text style={styles.eventListItemPlace}>京都テルサ</Text>
-      </View>
-      <TouchableOpacity>
-        <Icon name='delete' size={40} color='#B0B0B0'/>
+    <Link href='/event/detail' asChild>
+      <TouchableOpacity style={styles.eventListItem}>
+        <View>
+          <Text style={styles.eventListTitle}>Lv.1 男女混合バレーボール</Text>
+          <Text style={styles.eventListItemDate}>2024/7/21(日) 16:00~18:30</Text>
+          <Text style={styles.eventListItemPlace}>京都テルサ</Text>
+        </View>
+        <TouchableOpacity>
+          <Icon name='delete' size={40} color='#B0B0B0' />
+        </TouchableOpacity>
       </TouchableOpacity>
-    </View>
+    </Link>
   );
 };
 

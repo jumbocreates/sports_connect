@@ -1,12 +1,16 @@
 import { View, Text, StyleSheet } from "react-native"
-import Header from "../../components/Header"
+import { router } from "expo-router"
+
 import CircleButton from "../../components/CircleButton"
 import Icon from "../../components/Icon"
+
+const handlePress = () : void => {
+  router.push('event/edit')
+}
 
 const Detail = (): JSX.Element => {
   return (
     <View style={styles.container}>
-      <Header />
       <View style={styles.eventHeader}>
         <Text style={styles.eventTitle}>Lv.1 男女混合バレーボール</Text>
       </View>
@@ -54,7 +58,7 @@ const Detail = (): JSX.Element => {
           <Text style={styles.eventSpecialRules}>・前衛のセンタープレーヤーがセッターをすること</Text>
         </View>
       </View>
-        <CircleButton style={{ top:160, bottom: 'auto' }}>
+        <CircleButton onPress={handlePress} style={{ top:0, right:10,  bottom: 'auto' }}>
           <Icon name="pencil" size={40} color='#FFFFFF'/>
         </CircleButton>
     </View>

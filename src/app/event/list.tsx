@@ -1,15 +1,24 @@
-import { View, StyleSheet } from "react-native"
-import Header from "../../components/Header"
+import { View, Text, StyleSheet } from "react-native"
+import { router, useNavigation } from "expo-router"
+import { useEffect } from "react"
+
 import EventListItem from "../../components/EventListItem"
 import CircleButton from "../../components/CircleButton"
 import Icon from "../../components/Icon"
 
+const handlePress = () : void => {
+  router.push('event/create')
+}
+
 const List = ():JSX.Element =>{
+  useEffect(() => {
+    const navigation = useNavigation()
+    navigation.setOptions({
+      headerRigth: () => { return <Text>test</Text> }
+    })
+  }, [])
   return (
     <View style={styles.container}>
-      {/* ヘッダー */}
-      <Header />
-
       {/* イベントリスト */}
       <View>
         {/* イベント */}
@@ -18,7 +27,7 @@ const List = ():JSX.Element =>{
         <EventListItem />
       </View>
       {/* イベント追加ボタン */}
-      <CircleButton>
+      <CircleButton onPress={handlePress}>
         <Icon name='plus' size={40} color="#FFFFFF"/>
       </CircleButton>
 
