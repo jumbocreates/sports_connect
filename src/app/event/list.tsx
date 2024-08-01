@@ -1,20 +1,21 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, StyleSheet } from "react-native"
 import { router, useNavigation } from "expo-router"
 import { useEffect } from "react"
 
 import EventListItem from "../../components/EventListItem"
 import CircleButton from "../../components/CircleButton"
 import Icon from "../../components/Icon"
+import LogOutButton from "../../components/LogOutButton"
 
-const handlePress = () : void => {
+const handlePress = (): void => {
   router.push('event/create')
 }
 
-const List = ():JSX.Element =>{
+const List = (): JSX.Element => {
+  const navigation = useNavigation()
   useEffect(() => {
-    const navigation = useNavigation()
     navigation.setOptions({
-      headerRigth: () => { return <Text>test</Text> }
+      headerRight: () => { return <LogOutButton />}
     })
   }, [])
   return (
@@ -28,7 +29,7 @@ const List = ():JSX.Element =>{
       </View>
       {/* イベント追加ボタン */}
       <CircleButton onPress={handlePress}>
-        <Icon name='plus' size={40} color="#FFFFFF"/>
+        <Icon name='plus' size={40} color="#FFFFFF" />
       </CircleButton>
 
     </View>

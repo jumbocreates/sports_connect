@@ -9,7 +9,7 @@ const Layout = ():JSX.Element => {
     headerTitle: 'Sports Connect',
     headerBackTitle: '戻る',
     headerTitleStyle: {
-      fontSize: 40,
+      fontSize: 24,
       fontWeight: 'bold'
     }
   }}/>
