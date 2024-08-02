@@ -1,13 +1,26 @@
 import {
-  View, Text, TextInput, StyleSheet, TouchableOpacity
+  View, Text, TextInput, StyleSheet, TouchableOpacity, Alert
 } from 'react-native'
-import Button from '../../components/Button'
 import { Link, router } from 'expo-router'
 import { useState } from 'react'
+import { createUserWithEmailAndPassword } from 'firebase/auth'
 
-const handlePress = (): void => {
+import { auth } from '../../config'
+import Button from '../../components/Button'
+
+const handlePress = (email: string, password: string): void => {
   //会員登録
-  router.push('/event/list')
+  console.log(email, password)
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log(userCredential.user.uid)
+      router.replace('/event/list')
+    })
+    .catch((error) => {
+      const { code, message } = error
+      console.log(code, message)
+      Alert.alert(message)
+    })
 }
 
 const SignUp = (): JSX.Element => {
@@ -25,7 +38,7 @@ const SignUp = (): JSX.Element => {
           keyboardType='email-address'
           placeholder='Emailアドレス'
           textContentType='emailAddress'
-          />
+        />
         <TextInput
           style={styles.input}
           value={password}
@@ -37,7 +50,7 @@ const SignUp = (): JSX.Element => {
         />
         <Button
           label='新規登録'
-          onPress={handlePress}
+          onPress={() => { handlePress(email, password) }}
         />
         <View style={styles.footer}>
           <Text style={styles.footerText}>登録済みの方は</Text>
