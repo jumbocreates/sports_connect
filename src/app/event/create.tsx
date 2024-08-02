@@ -5,19 +5,30 @@ import { router } from "expo-router";
 
 import CircleButton from "../../components/CircleButton";
 import Icon from "../../components/Icon";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../config";
 
-const handlePress = () : void => {
-  router.back()
+const handlePress = async (): void => {
+  addDoc(collection(db, 'events'), {
+    bodyText: 'test'
+  })
+    .then((docRef) => {
+      console.log('成功', docRef.id)
+      router.back()
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 }
 
-const create = (): JSX.Element =>{
+const create = (): JSX.Element => {
   return (
     <KeyboardAvoidingView behavior='height' style={styles.container}>
       <View style={styles.inputContainer}>
-        <TextInput multiline style={styles.input} value=''/>
+        <TextInput multiline style={styles.input} value='' />
       </View>
       <CircleButton onPress={handlePress}>
-        <Icon name='check' size={40} color="#FFFFFF"/>
+        <Icon name='check' size={40} color="#FFFFFF" />
       </CircleButton>
     </KeyboardAvoidingView>
   )
