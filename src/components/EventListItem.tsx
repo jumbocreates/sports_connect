@@ -1,10 +1,32 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
-import Icon from './Icon';
+import { View, Text, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import { Link } from 'expo-router';
+import { deleteDoc, doc } from 'firebase/firestore';
+
+import Icon from './Icon';
 import { type Event } from '../../types/event';
+import { auth, db } from '../config';
+
 
 interface Props {
   event: Event
+}
+
+const handlePress = (id: string): void => {
+  if (auth.currentUser === null) { return }
+  const ref = doc(db, `users/${auth.currentUser.uid}/events`, id)
+  Alert.alert('メモを削除します。', 'よろしいでしょうか?', [
+    {
+      text: 'キャンセル'
+    },
+    {
+      text: '削除する',
+      style: 'destructive',
+      onPress: () => {
+        deleteDoc(ref)
+          .catch(() => { Alert.alert('削除に失敗しました') })
+      }
+    }
+  ])
 }
 
 const EventListItem = (props: Props): JSX.Element | null => {
@@ -36,7 +58,7 @@ const EventListItem = (props: Props): JSX.Element | null => {
             {dateString}
           </Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => { handlePress(event.id) }}>
           <Icon name='delete' size={40} color='#B0B0B0' />
         </TouchableOpacity>
       </TouchableOpacity>
