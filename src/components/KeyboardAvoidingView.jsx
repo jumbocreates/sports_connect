@@ -64,4 +64,4 @@ const KeyboardSafeView = ({ children, style }) => {
     </Animated.View>
   )
 }
-export default KeyboardSafeView
+export default KeyboardAvoidingView
