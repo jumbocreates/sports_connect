@@ -1,15 +1,40 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Icon from './Icon';
 import { Link } from 'expo-router';
+import { type Event } from '../../types/event';
 
-const EventListItem = (): JSX.Element => {
+interface Props {
+  event: Event
+}
+
+const EventListItem = (props: Props): JSX.Element | null => {
+  const { event } = props
+  const { bodyText, updatedAt } = event
+  if (bodyText === null || updatedAt === null) { return null }
+  const dateString = updatedAt.toDate().toLocaleString('ja-JP')
   return (
-    <Link href='/event/detail' asChild>
+    <Link
+      href={
+        {
+          pathname: '/event/detail',
+          params: { id: event.id }
+        }
+      }
+      asChild
+    >
       <TouchableOpacity style={styles.eventListItem}>
         <View>
-          <Text style={styles.eventListTitle}>Lv.1 男女混合バレーボール</Text>
-          <Text style={styles.eventListItemDate}>2024/7/21(日) 16:00~18:30</Text>
-          <Text style={styles.eventListItemPlace}>京都テルサ</Text>
+          <Text
+            numberOfLines={1}
+            style={styles.eventListTitle}
+          >
+            {bodyText}
+          </Text>
+          <Text
+            style={styles.eventListItemDate}
+          >
+            {dateString}
+          </Text>
         </View>
         <TouchableOpacity>
           <Icon name='delete' size={40} color='#B0B0B0' />
